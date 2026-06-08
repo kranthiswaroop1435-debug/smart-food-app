@@ -15,7 +15,12 @@ app = FastAPI(title="Smart Food API")
 # Configure CORS for React frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "http://localhost:5173",
+        "http://localhost:3000",
+        "https://smart-food-app-ybbe.vercel.app/",
+        "*"
+    ],
     allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
