@@ -10,6 +10,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+
 app = FastAPI(title="Smart Food API")
 
 # Configure CORS for React frontend
