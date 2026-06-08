@@ -1,0 +1,160 @@
+/* Orders Page Styles */
+.orders-page {
+  min-height: 100vh;
+  background-color: var(--bg-light);
+}
+
+.orders-header {
+  background-color: white;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--bg-gray);
+  margin-bottom: 32px;
+}
+
+.back-link {
+  display: inline-block;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  margin-bottom: 16px;
+  transition: color 0.2s;
+}
+
+.back-link:hover {
+  color: var(--primary-dark);
+}
+
+.orders-header h1 {
+  font-size: 2rem;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.orders-header p {
+  color: var(--text-medium);
+}
+
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 0;
+  gap: 16px;
+  color: var(--text-medium);
+}
+
+.empty-orders {
+  text-align: center;
+  padding: 64px 24px;
+}
+
+.mt-4 {
+  margin-top: 24px;
+  display: inline-block;
+}
+
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.order-card {
+  overflow: hidden;
+  padding: 0;
+}
+
+.order-card-header {
+  background-color: var(--bg-light);
+  padding: 16px 24px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  border-bottom: 1px solid var(--bg-gray);
+}
+
+.order-card-header .label {
+  display: block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 4px;
+  letter-spacing: 0.5px;
+}
+
+.order-card-header .value {
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.order-total .value {
+  color: var(--primary-color);
+  font-size: 1.1rem;
+}
+
+.order-card-body {
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 32px;
+}
+
+.order-card-body h4 {
+  font-size: 1rem;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+  border-bottom: 1px dashed var(--bg-gray);
+  padding-bottom: 8px;
+}
+
+.order-items-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.order-items-list li {
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--bg-gray);
+}
+
+.order-items-list li:last-child {
+  border-bottom: none;
+}
+
+.item-qty {
+  font-weight: 600;
+  color: var(--primary-color);
+  width: 40px;
+}
+
+.item-name {
+  flex: 1;
+  color: var(--text-dark);
+}
+
+.item-price {
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.order-delivery-info p {
+  margin: 4px 0;
+  color: var(--text-medium);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .order-card-header {
+    grid-template-columns: 1fr;
+  }
+  
+  .order-card-body {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
