@@ -87,13 +87,19 @@ const Cart = ({ cart, updateQuantity, clearCart }) => {
     setIsProcessing(true);
     
     try {
-      const user = JSON.parse(localStorage.getItem('user') || '{}');
-      const orderId = generateOrderId();
-      const orderTime = new Date().toISOString();
-      const estimatedTime = getEstimatedTime();
-      
-      const orderDetails = {
-        user_id: user.id || 'demo-user-id',
+const userId = localStorage.getItem('user_id');
+const orderId = generateOrderId();
+const orderTime = new Date().toISOString();
+const estimatedTime = getEstimatedTime();
+
+if (!userId) {
+  alert('Please login first!');
+  navigate('/login');
+  return;
+}
+
+const orderDetails = {
+        user_id: userId,
         full_name: deliveryInfo.fullName,
         phone_number: deliveryInfo.phoneNumber,
         delivery_address: deliveryInfo.address,
