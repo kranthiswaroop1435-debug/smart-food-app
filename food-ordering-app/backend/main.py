@@ -18,8 +18,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",
-        "http://localhost:3000",
-        "https://smart-food-app-ybbe.vercel.app/",
+        "https://smart-food-app-ybbe.vercel.app",
         "*"
     ],
     allow_credentials=False,
