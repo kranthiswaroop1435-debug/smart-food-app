@@ -87,34 +87,13 @@ const Cart = ({ cart, updateQuantity, clearCart }) => {
     setIsProcessing(true);
     
     try {
-      // ✅ FIXED: Try multiple ways to get user_id
-      let userId = localStorage.getItem('user_id');
-      
-      // Also try getting from 'user' object if stored that way
-      if (!userId || userId === 'null' || userId === 'undefined') {
-        const userObj = localStorage.getItem('user');
-        if (userObj) {
-          try {
-            const parsed = JSON.parse(userObj);
-            userId = parsed.id || parsed.user_id;
-          } catch (e) {
-            userId = null;
-          }
-        }
-      }
-
-      // If still no userId, use a fallback and continue
-      if (!userId || userId === 'null' || userId === 'undefined') {
-        // Don't block the order - just use a placeholder
-        userId = 'guest-' + Date.now();
-      }
-
+      const user = JSON.parse(localStorage.getItem('user') || '{}');
       const orderId = generateOrderId();
       const orderTime = new Date().toISOString();
       const estimatedTime = getEstimatedTime();
       
       const orderDetails = {
-        user_id: userId,
+        user_id: user.id || 'demo-user-id',
         full_name: deliveryInfo.fullName,
         phone_number: deliveryInfo.phoneNumber,
         delivery_address: deliveryInfo.address,
