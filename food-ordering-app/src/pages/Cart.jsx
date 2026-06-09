@@ -92,25 +92,28 @@ const orderId = generateOrderId();
 const orderTime = new Date().toISOString();
 const estimatedTime = getEstimatedTime();
 
-if (!userId) {
-  alert('Please login first!');
-  navigate('/login');
-  return;
+const userId = localStorage.getItem('user_id')
+
+if (!userId || userId === 'undefined' || userId === 'null') {
+  setIsProcessing(false)
+  alert('Session expired. Please login again!')
+  navigate('/login')
+  return
 }
 
 const orderDetails = {
-        user_id: userId,
-        full_name: deliveryInfo.fullName,
-        phone_number: deliveryInfo.phoneNumber,
-        delivery_address: deliveryInfo.address,
-        delivery_notes: deliveryInfo.notes || '',
-        total_amount: total,
-        items: cart.map(item => ({
-          food_name: item.name,
-          price: item.price,
-          quantity: item.quantity
-        }))
-      };
+  user_id: userId,
+  full_name: deliveryInfo.fullName,
+  phone_number: deliveryInfo.phoneNumber,
+  delivery_address: deliveryInfo.address,
+  delivery_notes: deliveryInfo.notes || '',
+  total_amount: total,
+  items: cart.map(item => ({
+    food_name: item.name,
+    price: item.price,
+    quantity: item.quantity
+  }))
+}
 
       const apiUrl = import.meta.env.VITE_API_URL;
       const response = await fetch(`${apiUrl}/api/orders`, {
